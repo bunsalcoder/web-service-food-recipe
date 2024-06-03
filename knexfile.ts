@@ -14,10 +14,10 @@ const config: { [key: string]: Knex.Config } = {
       password: String(process.env.DB_PASSWORD)
     },
     migrations: {
-      directory: 'database/migrations'
+      directory: 'src/database/migrations'
     },
     seeds: {
-      directory: 'database/seeds'
+      directory: 'src/database/seeds'
     }
   },
   production: {
@@ -30,10 +30,10 @@ const config: { [key: string]: Knex.Config } = {
       password: String(process.env.DB_PASSWORD)
     },
     migrations: {
-      directory: 'database/migrations'
+      directory: 'src/database/migrations'
     },
     seeds: {
-      directory: 'database/seeds'
+      directory: 'src/database/seeds'
     }
   }
 };
