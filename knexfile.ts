@@ -3,15 +3,24 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
+import {
+  DB_HOST,
+  DB_PORT,
+  DB_USER,
+  DB_PASSWORD,
+  DB_DATABASE,
+  DB_CLIENT,
+} from './src/constants';
+
 const config: { [key: string]: Knex.Config } = {
   development: {
-    client: 'pg',
+    client: DB_CLIENT,
     connection: {
-      host: process.env.DB_HOST,
-      port: Number(process.env.DB_PORT),
-      database: process.env.DB_DATABASE,
-      user: process.env.DB_USER,
-      password: String(process.env.DB_PASSWORD)
+      host: DB_HOST,
+      port: Number(DB_PORT),
+      database: DB_DATABASE,
+      user: DB_USER,
+      password: String(DB_PASSWORD)
     },
     migrations: {
       directory: 'src/database/migrations'
@@ -21,13 +30,13 @@ const config: { [key: string]: Knex.Config } = {
     }
   },
   production: {
-    client: 'pg',
+    client: DB_CLIENT,
     connection: {
-      host: process.env.DB_HOST,
-      port: Number(process.env.DB_PORT),
-      database: process.env.DB_DATABASE,
-      user: process.env.DB_USER,
-      password: String(process.env.DB_PASSWORD)
+      host: DB_HOST,
+      port: Number(DB_PORT),
+      database: DB_DATABASE,
+      user: DB_USER,
+      password: String(DB_PASSWORD)
     },
     migrations: {
       directory: 'src/database/migrations'

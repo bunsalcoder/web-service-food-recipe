@@ -8,8 +8,8 @@ import setupSwagger from './swagger';
 import knex from 'knex';
 import knexConfig from '../knexfile';
 
-import convertRoutes from './utils/convert-route';
 import routes from './routes';
+import registerRouters from './routes/router';
 import { APP_PORT } from './constants';
 
 const app = express();
@@ -21,8 +21,7 @@ app.use(helmet());
 app.use(cors());
 app.use(express.json());
 
-const router = convertRoutes(routes);
-app.use(router);
+registerRouters(app, routes);
 
 setupSwagger(app);
 
