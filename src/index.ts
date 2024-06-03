@@ -6,7 +6,7 @@ import cors from 'cors';
 import helmet from 'helmet';
 import setupSwagger from './swagger';
 import knex from 'knex';
-import knexConfig from './knexfile';
+import knexConfig from '../knexfile';
 
 import convertRoutes from './utils/convert-route';
 import routes from './routes';

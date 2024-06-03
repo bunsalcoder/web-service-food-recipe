@@ -6,11 +6,11 @@
   "scripts": {
     "start": "tsc && node dist/index.js",
     "start:dev": "nodemon --watch src --exec 'ts-node' src/index.ts",
-    "migrate:make": "knex --knexfile src/knexfile.ts migrate:make",
-    "migrate:latest": "knex --knexfile src/knexfile.ts migrate:latest",
-    "migrate:rollback": "knex --knexfile src/knexfile.ts migrate:rollback",
-    "seed:make": "knex --knexfile src/knexfile.ts seed:make",
-    "seed:run": "knex --knexfile src/knexfile.ts seed:run"
+    "migrate:make": "knex --knexfile ./knexfile.ts migrate:make",
+    "migrate:latest": "knex --knexfile ./knexfile.ts migrate:latest",
+    "migrate:rollback": "knex --knexfile ./knexfile.ts migrate:rollback",
+    "seed:make": "knex --knexfile ./knexfile.ts seed:make",
+    "seed:run": "knex --knexfile ./knexfile.ts seed:run"
   },
   "keywords": [],
   "author": "",
