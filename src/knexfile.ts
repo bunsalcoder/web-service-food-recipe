@@ -11,13 +11,13 @@ const config: { [key: string]: Knex.Config } = {
       port: Number(process.env.DB_PORT),
       database: process.env.DB_DATABASE,
       user: process.env.DB_USER,
-      password: process.env.DB_PASSWORD
+      password: String(process.env.DB_PASSWORD)
     },
     migrations: {
-      directory: './src/database/migrations'
+      directory: 'database/migrations'
     },
     seeds: {
-      directory: './src/database/seeds'
+      directory: 'database/seeds'
     }
   },
   production: {
@@ -27,13 +27,13 @@ const config: { [key: string]: Knex.Config } = {
       port: Number(process.env.DB_PORT),
       database: process.env.DB_DATABASE,
       user: process.env.DB_USER,
-      password: process.env.DB_PASSWORD
+      password: String(process.env.DB_PASSWORD)
     },
     migrations: {
-      directory: './src/database/migrations'
+      directory: 'database/migrations'
     },
     seeds: {
-      directory: './src/database/seeds'
+      directory: 'database/seeds'
     }
   }
 };

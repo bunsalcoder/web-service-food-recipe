@@ -6,11 +6,11 @@
   "scripts": {
     "start": "tsc && node dist/index.js",
     "start:dev": "nodemon --watch src --exec 'ts-node' src/index.ts",
-    "migrate:make": "knex --knexfile src/db/knexfile.ts migrate:make",
-    "migrate:latest": "knex --knexfile src/db/knexfile.ts migrate:latest",
-    "migrate:rollback": "knex --knexfile src/db/knexfile.ts migrate:rollback",
-    "seed:make": "knex --knexfile src/db/knexfile.ts seed:make",
-    "seed:run": "knex --knexfile src/db/knexfile.ts seed:run"
+    "migrate:make": "knex --knexfile src/knexfile.ts migrate:make",
+    "migrate:latest": "knex --knexfile src/knexfile.ts migrate:latest",
+    "migrate:rollback": "knex --knexfile src/knexfile.ts migrate:rollback",
+    "seed:make": "knex --knexfile src/knexfile.ts seed:make",
+    "seed:run": "knex --knexfile src/knexfile.ts seed:run"
   },
   "keywords": [],
   "author": "",
@@ -18,15 +18,19 @@
   "dependencies": {
     "@types/ajv": "^1.0.0",
     "ajv": "^8.14.0",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "helmet": "^7.1.0",
     "pg": "^8.11.5",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1",
     "ts-node": "^10.9.2",
-    "typescript": "^5.4.5"
+    "typescript": "^5.4.5",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
     "@types/node": "^20.13.0",
     "@types/swagger-jsdoc": "^6.0.4",
