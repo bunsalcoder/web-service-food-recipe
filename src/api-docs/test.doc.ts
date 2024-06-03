@@ -3,6 +3,11 @@ export default {
     get: {
       tags: ['Test'],
       description: 'Get test',
+      responses: {
+        '200': {
+          description: 'Successful response',
+        },
+      },
     },
   },
   '/test/{id}': {
@@ -16,6 +21,11 @@ export default {
           type: 'int',
         },
       ],
+      responses: {
+        '200': {
+          description: 'Successful response',
+        },
+      },
     },
   }
 };
