@@ -6,7 +6,7 @@ const options = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'Recipe Finder API',
+      title: 'Food Recipe API',
       version: '1.0.0',
     },
   },
