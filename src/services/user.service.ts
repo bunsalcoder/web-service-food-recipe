@@ -1,0 +1,1 @@
+export { search, create, find, update } from '../models/user.model';
