@@ -1,24 +1,11 @@
 import { Route } from './types';
-import validate from '../validator';
-import { 
-    searchActiveUsers, 
-    createUser, 
-    updateUser, 
-    detail 
-} from '../controllers/user.controller'
-
-const createUserReq = validate({
-    properties: ['username*', 'email*', 'password*']
-});
+import { searchActiveUsers, detail } from '../controllers/user.controller'
 
 export default {
     '/user': ['', [], {
         get: [searchActiveUsers],
-        post: [createUserReq, createUser],
     }, {
-        '/:id': ['', [], {
-            put: [updateUser]
-        }, {
+        '/:id': ['', [], {}, {
             '/detail': ['', [], {
                 get: [detail]
             }]
