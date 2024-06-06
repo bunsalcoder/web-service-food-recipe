@@ -31,17 +31,6 @@ export const search = (
 }
 
 /**
- * Insert user into user table and return the ID of the inserted record.
- *
- * @param {Record<string, any>} data - the data to be inserted into the table. 
- * @param {any} trx - (optional) the transaction object to use for the insertion.
- * @returns {Promise<number>} - return the id of the inserted record.
- */
-export const create = (data: Record<string, any>, trx: any = false)
-  : Promise<number> => table(trx).insert(data)
-  .returning('id').then(([{ id }]: any) => id);
-
-/**
  * Retrieve a user by the provided id
  *
  * @param {number} id - the ID of the record. 
@@ -49,12 +38,3 @@ export const create = (data: Record<string, any>, trx: any = false)
  */
 export const find = (id: number): Promise<any> => table().where({ id }).first();
 
-/**
- * Update a user base on the provided ID.
- * 
- * @param {number} id - the id to update the data.
- * @param {Record<string, any>} data - the data to be updated of the user table.
- * @return {Promise<number>} - return the id of the updated record.
- */
-export const update = (id: number, data: Record<string, any>)
-  : Promise<number> => table().update(data).where({ id });

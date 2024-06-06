@@ -1,9 +1,3 @@
-import {
-    username,
-    email,
-    password
-} from '../validator/schemas';
-
 export default {
     '/user': {
       get: {
@@ -37,30 +31,6 @@ export default {
           },
         },
       },
-      post: {
-        tags: ['User'],
-        description: 'This endpoint allows you to create a new user',
-        parameters: [],
-        requestBody: {
-            content: {
-              'application/json': {
-                schema: {
-                  type: 'object',
-                  properties: {
-                    username,
-                    email,
-                    password,
-                  },
-                },
-              },
-            },
-        },
-        responses: {
-            '200': {
-              description: 'Successful response',
-            },
-        },
-      }
     },
     '/user/{id}/detail': {
       get: {

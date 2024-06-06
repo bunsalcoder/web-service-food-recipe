@@ -1,1 +1,1 @@
-export { search, create, find, update } from '../models/user.model';
+export { search, find } from '../models/user.model';

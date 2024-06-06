@@ -17,3 +17,5 @@ export const DB_DATABASE = getEnv('DB_DATABASE') as string;
 export const DB_POOL_MIN = getEnv('DB_POOL_MIN') as number;
 export const DB_POOL_MAX = getEnv('DB_POOL_MAX') as number;
 export const DB_CLIENT = getEnv('DB_CLIENT') as string;
+
+export const JWT_SECRET_KEY = getEnv('JWT_SECRET_KEY') as string;
