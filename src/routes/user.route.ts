@@ -1,8 +1,9 @@
 import { Route } from './types';
+import { permissionMiddleware } from '../middlewares/permission.middleware';
 import { searchActiveUsers, detail } from '../controllers/user.controller'
 
 export default {
-    '/user': ['', [], {
+    '/user': ['', [permissionMiddleware], {
         get: [searchActiveUsers],
     }, {
         '/:id': ['', [], {}, {
