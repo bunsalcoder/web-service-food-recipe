@@ -19,3 +19,5 @@ export const DB_POOL_MAX = getEnv('DB_POOL_MAX') as number;
 export const DB_CLIENT = getEnv('DB_CLIENT') as string;
 
 export const JWT_SECRET_KEY = getEnv('JWT_SECRET_KEY') as string;
+
+export const DB_PAGINATION_PAGE_SIZE = getEnv('DB_PAGINATION_PAGE_SIZE') as number;

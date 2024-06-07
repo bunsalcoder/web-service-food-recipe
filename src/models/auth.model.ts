@@ -38,7 +38,8 @@ export const login = async (data: Record<string, any>): Promise<any> => {
     id: user.id,
     username,
     email: user.email,
-    createdAt: user.created_at
+    createdAt: user.created_at,
+    isAdmin: user.is_admin
   }, JWT_SECRET_KEY, { expiresIn: '1h' });
 
   return token;

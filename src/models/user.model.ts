@@ -22,12 +22,7 @@ export const search = (
         query.where({ 'user.is_active ': filter.isActive });
     }
 
-    if (q) {
-        query.where('user.username', 'like', `%${q}%`)
-        .orWhere('user.email', 'like', `%${q}`)
-    }
-
-    return query;
+    return query.search(q, ['username', 'email'], paginate);
 }
 
 /**
