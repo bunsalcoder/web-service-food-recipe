@@ -5,3 +5,6 @@ export const userId = { type: 'integer' };
 export const title = { type: 'string' };
 export const description = { type: 'string' };
 export const instructions = { type: 'string' };
+export const name = { type: 'string' };
+export const category_id = { type: 'integer'};
+export const recipe_id = { type: 'integer'};
