@@ -6,3 +6,5 @@ export const recipeId = { type: 'integer'};
 export const title = { type: 'string' };
 export const description = { type: 'string' };
 export const instructions = { type: 'string' };
+export const quantity = { type: 'integer' };
+export const unit = { type: 'integer' };
