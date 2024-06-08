@@ -4,6 +4,7 @@ import authRoute from './auth.route';
 import testRoute from './test.route';
 import userRoute from './user.route';
 import recipeRoute from './recipe.route';
+import favouriteRoute from './favourite.route';
 
 export default {
   ...authRoute,
@@ -12,5 +13,6 @@ export default {
     ...testRoute,
     ...userRoute,
     ...recipeRoute,
+    ...favouriteRoute,
   }],
 } as Route;
