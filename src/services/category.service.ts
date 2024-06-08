@@ -1,0 +1,1 @@
+export { search,insert, find, update, destroy } from '../models/category.model';
