@@ -4,6 +4,7 @@ import authRoute from './auth.route';
 import testRoute from './test.route';
 import userRoute from './user.route';
 import recipeRoute from './recipe.route';
+import ingredientRoute from './ingredient.route';
 
 export default {
   ...authRoute,
@@ -12,5 +13,6 @@ export default {
     ...testRoute,
     ...userRoute,
     ...recipeRoute,
+    ...ingredientRoute,
   }],
 } as Route;

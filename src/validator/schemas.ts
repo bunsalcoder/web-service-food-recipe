@@ -5,3 +5,4 @@ export const userId = { type: 'integer' };
 export const title = { type: 'string' };
 export const description = { type: 'string' };
 export const instructions = { type: 'string' };
+export const name = { type: 'string' };
