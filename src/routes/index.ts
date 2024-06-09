@@ -8,15 +8,12 @@ import favouriteRoute from './favourite.route';
 import recipeIngredientRoute from './recipe_ingredient.route';
 import categoryRoute from './category.route';
 import recipeCategoryRoute from './recipe_category.route';
+import ingredientRoute from './ingredient.route';
 
 export default {
   ...authRoute,
 
-  '': [
-    '',
-    [verifyToken],
-    {},
-    {
+  '': ['', [verifyToken],{},{
       ...testRoute,
       ...userRoute,
       ...recipeRoute,
@@ -24,6 +21,7 @@ export default {
       ...recipeIngredientRoute,
       ...categoryRoute,
       ...recipeCategoryRoute,
+      ...ingredientRoute,
     },
   ],
 } as Route;
