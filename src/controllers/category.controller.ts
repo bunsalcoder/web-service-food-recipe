@@ -12,7 +12,7 @@ import { search,insert, find, update, destroy } from '../services/category.servi
  */
 export const searchCategory = (req: Request, res: Response) => {
     const {
-        q = '', page = 1, pageSize = 20, isActive,
+        q = '', page = 1, pageSize = 20,
     } = req.query;
 
     return search(String(q), { page, pageSize })

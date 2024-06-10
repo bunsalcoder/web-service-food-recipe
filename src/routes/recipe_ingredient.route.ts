@@ -10,38 +10,27 @@ import {
 } from '../controllers/recipe_ingredient.controller';
 
 const createRecipeIngredientReq = validate({
-  properties: ['quantity', 'unit'],
+  properties: ['recipeId*', 'ingredientId*', 'quantity*', 'unit*'],
 });
 
 export default {
-  '/recipeIngredient': [
-    '',
-    [],
-    {
+  '/recipe-ingredient': ['', [], {
       get: [searchActiveRecipeIngredient],
       post: [
         createRecipeIngredientReq,
         permissionMiddleware,
         createRecipeIngredient,
       ],
-    },
-    {
-      '/:id': [
-        '',
-        [],
-        {
+    }, {
+      '/:id': ['', [], {
           put: [
             createRecipeIngredientReq,
             permissionMiddleware,
             updateRecipeIngredient,
           ],
           delete: [permissionMiddleware, deleteRecipeIngredient],
-        },
-        {
-          '/detail': [
-            '',
-            [],
-            {
+        }, {
+          '/detail': ['', [], {
               get: [detail],
             },
           ],

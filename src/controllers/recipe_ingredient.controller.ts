@@ -7,6 +7,7 @@ import {
   update,
   destroy,
 } from '../services/recipe_ingredient.service';
+import { quantity } from '../validator/schemas';
 /**
  * List active recipe_ingredient base on the provided query.
  *
@@ -18,7 +19,7 @@ export const searchActiveRecipeIngredient = (req: Request, res: Response) => {
   const { q = '', page = 1, pageSize = 20 } = req.query;
 
   return search(String(q), { page, pageSize })
-    .then((recipe_ingredient: any) => res.json({ recipe_ingredient }))
+    .then((recipeIngredient: any) => res.json({ recipeIngredient }))
     .catch((error: any) => responseError(res, error));
 };
 
@@ -29,11 +30,19 @@ export const searchActiveRecipeIngredient = (req: Request, res: Response) => {
  * @param {Response} res - the response object.
  * @returns {Promise<any>} - a promise that resolve when the creation is completed.
  */
-export const createRecipeIngredient = (req: any, res: Response) =>
-  insert(req.body)
+export const createRecipeIngredient = (req: any, res: Response) => {
+  const { 
+    recipeId: recipe_id, ingredientId: ingredient_id,
+    quantity, unit
+  } = req.body;
+
+  const data = { recipe_id, ingredient_id, quantity, unit }
+  
+  return insert(data)
     .then((id: any) => find(id))
-    .then((recipe_ingredient: any) => res.json({ recipe_ingredient }))
+    .then((recipeIngredient: any) => res.json({ recipeIngredient }))
     .catch((error: any) => responseError(res, error));
+}
 
 /**
  * Update a recipe_ingredient
@@ -45,9 +54,16 @@ export const createRecipeIngredient = (req: any, res: Response) =>
 export const updateRecipeIngredient = (req: Request, res: Response) => {
   const { id } = req.params;
 
-  return update(Number(id), req.body)
+  const { 
+    recipeId: recipe_id, ingredientId: ingredient_id,
+    quantity, unit
+  } = req.body;
+
+  const data = { recipe_id, ingredient_id, quantity, unit }
+
+  return update(Number(id), data)
     .then(() => find(Number(id)))
-    .then((recipe_ingredient: any) => res.json({ recipe_ingredient }))
+    .then((recipeIngredient: any) => res.json({ recipeIngredient }))
     .catch((error: any) => responseError(res, error));
 };
 
@@ -62,7 +78,7 @@ export const detail = (req: Request, res: Response): Promise<any> => {
   const { id } = req.params;
 
   return find(Number(id))
-    .then((recipe_ingredient: any) => res.json({ recipe_ingredient }))
+    .then((recipeIngredient: any) => res.json({ recipeIngredient }))
     .catch((error: any) => responseError(res, error));
 };
 

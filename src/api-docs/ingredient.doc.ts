@@ -8,6 +8,11 @@ export default {
         parameters: [
             {
               in: 'query',
+              name: 'q',
+              type: 'string',
+            },
+            {
+              in: 'query',
               name: 'page',
               type: 'int',
             },

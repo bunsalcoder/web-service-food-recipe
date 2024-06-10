@@ -9,9 +9,13 @@ import { search, insert, find, update, destroy } from '../services/ingredient.se
  * @param {Response} res - the response object. 
  * @returns {Promise<any>} - a promise that resolve to the retrieval result.
  */
-export const searchActiveIngredient = (_req: Request, res: Response): Promise<any> => search()
-  .then((ingredients: any) => res.json({ ingredients }))
-  .catch((error: any) => responseError(res, error));
+export const searchActiveIngredient = (req: Request, res: Response): Promise<any> => {
+  const { q = '', page = 1, pageSize = 20 } = req.query;
+
+  return search(String(q), { page, pageSize })
+    .then((recipe: any) => res.json({ recipe }))
+    .catch((error: any) => responseError(res, error));
+}
 
 /**
  * get detail of the ingredient base on the provided id.

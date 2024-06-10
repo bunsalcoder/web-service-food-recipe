@@ -28,7 +28,8 @@ export const searchRecipeCategory = (req: Request, res: Response) => {
  * @returns {Promise<any>} - a promise that resolve when the creation is completed.
  */
 export const createRecipeCategory = (req: any, res: Response) => {
-    const data = { ...req.body };
+    const { recipeId: recipe_id, categoryId: category_id } = req.body;
+    const data = { recipe_id, category_id };
   
     return insert(data)
       .then((id: any) => find(id))
@@ -46,12 +47,14 @@ export const createRecipeCategory = (req: any, res: Response) => {
  */
 export const updateRecipeCategory = (req: Request, res: Response) => {
     const { id } = req.params;
+    const { recipeId: recipe_id, categoryId: category_id } = req.body;
+    const data = { recipe_id, category_id };
   
-    return update(Number(id), req.body)
+    return update(Number(id), data)
       .then(() => find(Number(id)))
       .then((recipe_category: any) => res.json({ recipe_category }))
       .catch((error: any) => responseError(res, error));
-  }
+}
 
 /**
  * Retrieve the detail of user base on the given ID.

@@ -5,7 +5,19 @@ const table = initModel('ingredient');
 /**
  * search for the ingredient.
  */
-export const search = (): Promise<any> => table().whereNull('deleted_at');
+export const search = (
+  q: string = '',
+  paginate: any = { page: 1, pageSize: 20 },
+): Promise<any> => {
+  const query = table()
+    .select(
+      'ingredient.id',
+      'ingredient.name',
+    )
+    .whereNull('ingredient.deleted_at');
+
+  return query.search(q, ['ingredient.name'], paginate);
+}
 
 /**
  * find a recipe by the provided id.
@@ -13,7 +25,7 @@ export const search = (): Promise<any> => table().whereNull('deleted_at');
  * @param {number} id - the id of the recipe to be retrieved. 
  * @returns {Promise<any>} - a promise that resolve when the retrieval is completed.
  */
-export const find = (id: number): Promise<any> => table().where({ id }).first();
+export const find = (id: number): Promise<any> => table().where({ id }).whereNull('deleted_at').first();
 
 /**
  * insert the data into the database.

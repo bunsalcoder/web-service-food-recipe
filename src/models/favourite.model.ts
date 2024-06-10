@@ -9,6 +9,7 @@ const table = initModel('favourite');
 export const search = (
     q: string = '',
     paginate: any = { page: 1, pageSize: 20 },
+    userId: number,
 ): Promise<any> => {
     const query = table().select(
         'favourite.id',
@@ -21,8 +22,10 @@ export const search = (
     )
     .leftJoin('user', 'favourite.user_id', 'user.id')
     .leftJoin('recipe', 'favourite.recipe_id', 'recipe.id')
+    .where({ 'favourite.user_id': userId })
+    .whereNull('favourite.deleted_at');
 
-    return query;
+    return query.search(q, ['recipe.title', 'recipe.description', 'recipe.instructions'], paginate);
 }
 
 /**
@@ -31,7 +34,16 @@ export const search = (
  * @param {number} id - the ID of the record. 
  * @returns {Promise<any>} - a promise that resolve to the user object.
  */
-export const find = (id: number): Promise<any> => table().where({ id }).first();
+export const find = (id: number): Promise<any> => table()
+  .select(
+    'favourite.id',
+    'user.username',
+    'recipe.title',
+    'recipe.description',
+    'recipe.instructions',
+  )
+  .leftJoin('user', 'favourite.user_id', 'user.id')
+  .leftJoin('recipe', 'favourite.recipe_id', 'recipe.id').where({ 'favourite.id': id }).first();
 
 
 /**

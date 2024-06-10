@@ -2,9 +2,11 @@ import { Route } from './types';
 import { searchRecipeCategory,createRecipeCategory, detail, updateRecipeCategory, deleteRecipeCategory } from '../controllers/recipe_category.controller'
 import validate from '../validator/index';
 import { permissionMiddleware } from '../middlewares/permission.middleware';
+
 const createRecipeCategoryReq = validate({
-    properties: ['recipe_id*', 'category_id*'],
-  });
+  properties: ['recipeId*', 'categoryId*'],
+});
+
 export default {
     '/recipe-categories': ['', [], {
         get: [searchRecipeCategory],

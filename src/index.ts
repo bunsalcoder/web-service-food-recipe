@@ -33,8 +33,8 @@ const startServer = (port: number) => {
 
   server.on('error', (err: NodeJS.ErrnoException) => {
     if (err.code === 'EADDRINUSE') {
-      console.log(`Port ${port} is already in use, trying port ${port + 1}...`);
-      startServer(port + 1);
+      console.log(`Port ${port} is already in use, trying port ${Number(port) + 1}...`);
+      startServer(Number(port) + 1);
     } else {
       console.error('Server error:', err);
     }
