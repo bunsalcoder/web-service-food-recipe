@@ -1,4 +1,4 @@
-import { category_id, recipe_id } from '../validator/schemas';
+import { categoryId, recipeId } from '../validator/schemas';
 
 export default {
     '/recipe-categories': {
@@ -10,11 +10,6 @@ export default {
               in: 'query',
               name: 'q',
               type: 'string',
-            },
-            {
-              in: 'query',
-              name: 'isActive',
-              type: 'boolean',
             },
             {
               in: 'query',
@@ -43,8 +38,8 @@ export default {
               schema: {
                 type: 'object',
                 properties: {
-                  category_id,
-                  recipe_id
+                  categoryId,
+                  recipeId
                 },
               },
             },
@@ -74,8 +69,8 @@ export default {
               schema: {
                 type: 'object',
                 properties: {
-                  recipe_id,
-                  category_id
+                  categoryId,
+                  recipeId
                 },
               },
             },

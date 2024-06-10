@@ -16,18 +16,16 @@ export const search = (
   const query = table()
     .select(
       'recipe_ingredient.id',
+      'recipe.title',
+      'ingredient.name as ingredient',
       'recipe_ingredient.quantity',
       'recipe_ingredient.unit'
     )
     .leftJoin('recipe', 'recipe_ingredient.recipe_id', 'recipe.id')
     .leftJoin('ingredient', 'recipe_ingredient.ingredient_id', 'ingredient.id')
-    .whereNull('recipe.deleted_at');
+    .whereNull('recipe_ingredient.deleted_at');
 
-  return query.search(
-    q,
-    ['recipe_ingredient.quantity', 'recipe_ingredient.unit'],
-    paginate
-  );
+  return query.search(q, ['recipe.title', 'ingredient.name', 'recipe_ingredient.unit'], paginate);
 };
 
 /**
@@ -40,11 +38,15 @@ export const find = (id: number): Promise<any> =>
   table()
     .select(
       'recipe_ingredient.id',
+      'recipe.title',
+      'ingredient.name as ingredient',
       'recipe_ingredient.quantity',
       'recipe_ingredient.unit'
     )
-    .where({ id })
-    .whereNull('deleted_at')
+    .leftJoin('recipe', 'recipe_ingredient.recipe_id', 'recipe.id')
+    .leftJoin('ingredient', 'recipe_ingredient.ingredient_id', 'ingredient.id')
+    .where({ 'recipe_ingredient.id': id })
+    .whereNull('recipe_ingredient.deleted_at')
     .first();
 
 /**

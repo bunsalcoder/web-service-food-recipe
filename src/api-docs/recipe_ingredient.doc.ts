@@ -1,7 +1,7 @@
-import { quantity, unit } from '../validator/schemas';
+import { recipeId, ingredientId, quantity, unit } from '../validator/schemas';
 
 export default {
-  '/recipeIngredient': {
+  '/recipe-ingredient': {
     get: {
       tags: ['Recipe Ingredient'],
       description:
@@ -39,6 +39,8 @@ export default {
             schema: {
               type: 'object',
               properties: {
+                recipeId,
+                ingredientId,
                 quantity,
                 unit,
               },
@@ -53,7 +55,7 @@ export default {
       },
     },
   },
-  '/recipeIngredient/{id}': {
+  '/recipe-ingredient/{id}': {
     put: {
       tags: ['Recipe Ingredient'],
       description: 'This endpoint is for updating the recipe ingredient.',
@@ -70,6 +72,8 @@ export default {
             schema: {
               type: 'object',
               properties: {
+                recipeId,
+                ingredientId,
                 quantity,
                 unit,
               },
@@ -100,7 +104,7 @@ export default {
       },
     },
   },
-  '/recipeIngredient/{id}/detail': {
+  '/recipe-ingredient/{id}/detail': {
     get: {
       tags: ['Recipe Ingredient'],
       description:

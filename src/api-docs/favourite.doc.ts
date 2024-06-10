@@ -1,4 +1,4 @@
-import { userId, recipeId } from '../validator/schemas';
+import { recipeId } from '../validator/schemas';
 
 export default {
     '/favourite': {
@@ -6,6 +6,11 @@ export default {
         tags: ['Favourite'],
         description: 'This endpoint allows you to search for favourite recipe you have added. It returns a list of favourite recipes based on the provided query string (q). Pagination is supported using the page and pageSize parameters.',
         parameters: [
+            {
+              in: 'query',
+              name: 'q',
+              type: 'string',
+            },
             {
               in: 'query',
               name: 'page',
@@ -33,7 +38,6 @@ export default {
               schema: {
                 type: 'object',
                 properties: {
-                    userId,
                     recipeId, 
                 },
               },
@@ -48,35 +52,34 @@ export default {
       }
     },
     '/favourite/{id}': {
-      put: {
-        tags: ['Favourite'],
-        description: 'This endpoint is for updating the favourite recipe.',
-        parameters: [
-          {
-            in: 'path',
-            name: 'id',
-            type: 'int',
-          },
-        ],
-        requestBody: {
-          content: {
-            'application/json': {
-              schema: {
-                type: 'object',
-                properties: {
-                    userId,
-                    recipeId, 
-                },
-              },
-            },
-          },
-        },
-        responses: {
-          '200': {
-            description: 'Successful response',
-          },
-        },
-      },
+      // put: {
+      //   tags: ['Favourite'],
+      //   description: 'This endpoint is for updating the favourite recipe.',
+      //   parameters: [
+      //     {
+      //       in: 'path',
+      //       name: 'id',
+      //       type: 'int',
+      //     },
+      //   ],
+      //   requestBody: {
+      //     content: {
+      //       'application/json': {
+      //         schema: {
+      //           type: 'object',
+      //           properties: {
+      //               recipeId, 
+      //           },
+      //         },
+      //       },
+      //     },
+      //   },
+      //   responses: {
+      //     '200': {
+      //       description: 'Successful response',
+      //     },
+      //   },
+      // },
       delete: {
         tags: ['Favourite'],
         description: 'This endpoint is for removing the recipe from favourite.',

@@ -15,14 +15,14 @@ export const search = (
     .leftJoin('recipe', 'recipe_category.recipe_id', 'recipe.id')
     .leftJoin('category', 'recipe_category.category_id', 'category.id')
     .select(
-      'category.name',
+      'category.name as category',
       'recipe.title',
       'recipe.description',
       'recipe.instructions',
     )
     .whereNull('recipe_category.deleted_at');
 
-    return query.search(q, paginate);
+    return query.search(q, ['category.name', 'recipe.title', 'recipe.description', 'recipe.instructions'], paginate);
 }
 
 /**
@@ -58,7 +58,7 @@ export const find = (id: number): Promise<any> => table()
 .leftJoin('category', 'recipe_category.category_id', 'category.id')
 .select(
   'recipe_category.id',
-  'category.name',
+  'category.name as category',
   'recipe.title',
   'recipe.description',
   'recipe.instructions',

@@ -11,7 +11,9 @@ export const search = (
     q: string = '',
     paginate: any = { page: 1, pageSize: 20 },
 ): Promise<any> => {
-    const query = table().whereNull('deleted_at');
+    const query = table()
+    .select('id', 'name')
+    .whereNull('deleted_at');
 
     return query.search(q, ['name'], paginate);
 }
@@ -44,7 +46,8 @@ export const update = (id: number, data: Record<string, any>)
  * @param {number} id - the ID of the record. 
  * @returns {Promise<any>} - a promise that resolve to the user object.
  */
-export const find = (id: number): Promise<any> => table().where({ id }).first();
+export const find = (id: number): Promise<any> => table()
+  .select('id', 'name').where({ id }).first();
 
 /**
  * delete the recipe

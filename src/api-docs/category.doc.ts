@@ -13,11 +13,6 @@ export default {
             },
             {
               in: 'query',
-              name: 'isActive',
-              type: 'boolean',
-            },
-            {
-              in: 'query',
               name: 'page',
               type: 'int',
             },

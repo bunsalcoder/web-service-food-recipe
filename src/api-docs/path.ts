@@ -13,9 +13,9 @@ export default {
   ...testDoc,
   ...userDoc,
   ...recipeDoc,
+  ...ingredientDoc,
   ...recipeIngredientDoc,
-  ...favouriteDoc,
   ...categoryDoc,
   ...recipeCategoryDoc,
-  ...ingredientDoc,
+  ...favouriteDoc,
 };
