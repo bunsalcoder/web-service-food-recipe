@@ -17,11 +17,11 @@ const createFavouriteReq = validate({
   export default {
     '/favourite': ['', [], {
       get: [searchFavouriteRecipe],
-      post: [createFavouriteReq, permissionMiddleware, AddRecipeToFavourite],
+      post: [createFavouriteReq, AddRecipeToFavourite],
     }, {
       '/:id': ['', [], {
         put: [createFavouriteReq, permissionMiddleware, AddRecipeToFavourite],
-        delete: [permissionMiddleware, removeRecipeFromFavourite],
+        delete: [removeRecipeFromFavourite],
       }, {
         '/detail': ['', [], {
           get: [detail]
