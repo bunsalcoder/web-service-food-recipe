@@ -44,12 +44,12 @@ The Food Recipe Project is a web-based application designed to provide a platfor
 
 4. Run migrations:
     ```sh
-    npx knex migrate:latest
+    npm run migrate:latest
     ```
 
 5. Seed the database (optional):
     ```sh
-    npx knex seed:run
+    npm run seed:run
     ```
 
 ### Running the Project
