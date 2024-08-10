@@ -1,5 +1,6 @@
 import { APP_PORT } from '../constants';
 import paths from './path';
+import * as schemas from '../validator/schemas';
 
 export default {
   openapi: '3.0.0',
@@ -23,5 +24,6 @@ export default {
     },
   ],
   tags: [],
+  schemas,
   paths,
 };
